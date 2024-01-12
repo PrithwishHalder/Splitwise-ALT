@@ -1,0 +1,31 @@
+#:import WipeTransition kivy.uix.screenmanager.WipeTransition
+
+#: import PasswordTextField config.custom.PasswordTextField
+#: import Login components.appLoader.appLoader.AppLoader
+#: import Login components.login.login.Login
+#: import Signup components.signup.signup.Signup
+#: import Signup components.home.home.Home
+#: import Account components.account.account.Account
+#: import Analysis components.analysis.analysis.Analysis
+#: import Profile components.profile.profile.Profile
+
+#: include config/custom.kv
+#: include components/appLoader/appLoader.kv
+#: include components/login/login.kv
+#: include components/signup/signup.kv
+#: include components/home/home.kv
+#: include components/account/account.kv
+#: include components/analysis/analysis.kv
+#: include components/profile/profile.kv
+
+MyScreenManager:
+    id: screen_manager
+    transition: WipeTransition()
+
+    AppLoader:
+    Login:
+    Signup:
+    Home:
+    Account:
+    Analysis:
+    Profile:

@@ -1,0 +1,90 @@
+<Login>:
+    id: 'login'
+
+    MDFloatLayout:
+
+        MDIconButton:
+            icon: 'theme-light-dark'  # Specify the icon name here
+            size_hint: None, None
+            size: "24dp", "24dp"
+            pos_hint: {'center_x': 0.9, 'y': 0.9}
+            on_release: app.change_theme()
+
+        AsyncImage:
+            source: 'assets/logo.png'
+            size_hint: None, None
+            size: "180dp", "180dp"
+            halign: 'center'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.3
+            pos_hint: {'center_x': 0.5, 'top': 0.5}
+
+            MDTextField:
+                id: username
+                icon_left: 'account'
+                hint_text: "Username"
+                size_hint_x: 0.75
+                pos_hint: {'center_x': 0.5}
+                on_text: app.validate_input(self, self.text, 'username')
+
+            MDTextField:
+                id: password
+                icon_left: 'key-variant'
+                hint_text: "Password"
+                password: True
+                size_hint_x: 0.75
+                pos_hint: {'center_x': 0.5}
+                on_text: app.validate_input(self, self.text, 'password')
+
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_y: 0.2
+                height: dp(48)
+                padding: dp(app.screen_width*0.12), 0,0,0
+
+                MDCheckbox:
+                    id: center_widget
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    color_inactive: "blue"
+                    pos_hint: {'center_y': 0.5}
+                    on_release:
+                        password.password = False if password.password is True else True
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: 1
+                    height: dp(48)
+
+                    MDLabel:
+                        text: "Show Password"
+                        height: "48dp"
+
+        MDBoxLayout:
+            size_hint_x: 0.5
+            orientation: 'horizontal'
+            size_hint_y: 0.3
+            pos_hint: {'center_x': 0.5, 'top': 0.4}
+
+            EvenlySpacedMDBoxLayout:
+                orientation: 'horizontal'
+                spacing: dp(50)
+                size_hint_x: 0.5
+                height: 500
+                padding: dp(app.screen_width*0.12), 0, 0, 0
+
+                MDFillRoundFlatIconButton:
+                    text: "Login"
+                    icon: "login-variant"
+                    text_color: "white"
+                    on_release: self.parent.parent.parent.parent.login()
+
+                MDRoundFlatIconButton:
+                    text: "Sign Up"
+                    icon: "account-plus"
+                    text_color: "blue"
+                    on_release:
+                        app.root.current = "signup"

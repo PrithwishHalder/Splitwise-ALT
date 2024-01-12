@@ -1,0 +1,18 @@
+<PasswordTextField>:
+    size_hint_y: None
+
+    MDTextField:
+        id: root.id
+        hint_text: root.hint_text
+        text: root.text
+        password: True
+        icon_left: "key-variant"
+
+    MDIconButton:
+        icon: "eye-off"
+        pos_hint: {"center_y": .5}
+        pos: root.id.width - self.width + dp(8), 0
+        theme_text_color: "Hint"
+        on_release:
+            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+            text_field.password = False if text_field.password is True else True

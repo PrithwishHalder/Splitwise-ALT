@@ -1,0 +1,41 @@
+<Home>
+    id: "home"
+
+    MDBoxLayout:
+
+    MDBottomNavigation:
+        id: 'navigation'
+        #panel_color: "#eeeaea"
+        selected_color_background: "orange"
+        text_color_active: "lightgrey"
+
+        MDBottomNavigationItem:
+            name: 'home'
+            text: 'Home'
+            icon: 'home-outline'
+            badge_icon: ""
+            on_tab_press: app.root.current = "home"
+
+            MDLabel:
+                text: root.label_data
+                halign: 'center'
+
+        MDBottomNavigationItem:
+            name: 'account'
+            text: 'Account'
+            icon: 'book-account-outline'
+            badge_icon: ""
+            on_tab_press: app.root.current = "account"
+
+        MDBottomNavigationItem:
+            name: 'analysis'
+            text: 'Analysis'
+            icon: 'chart-donut'
+            badge_icon: ""
+            on_tab_press: app.root.current = "analysis"
+
+        MDBottomNavigationItem:
+            name: 'profile'
+            text: 'Profile'
+            icon: 'account-outline'
+            on_tab_press: app.root.current = "profile"
