@@ -1,6 +1,7 @@
 # KivyMD modules
 from kivy.metrics import dp
 from kivymd.app import MDApp
+from kivymd.uix.behaviors import FakeRectangularElevationBehavior
 from kivymd.uix.boxlayout import MDBoxLayout
 
 # Kivy modules
@@ -11,6 +12,7 @@ from kivy.properties import NumericProperty
 from kivy.clock import Clock
 from kivy.storage.jsonstore import JsonStore
 from kivy.logger import Logger
+from kivymd.uix.floatlayout import MDFloatLayout
 
 # Screen
 from components.appLoader.appLoader import AppLoader
@@ -20,6 +22,12 @@ from components.home.home import Home
 from components.account.account import Account
 from components.analysis.analysis import Analysis
 from components.profile.profile import Profile
+
+Window.size = (350,580)
+
+
+class NavBar(FakeRectangularElevationBehavior, MDFloatLayout):
+    pass
 
 
 class MyScreenManager(ScreenManager):
@@ -45,13 +53,6 @@ class MyScreenManager(ScreenManager):
 
     def on_start(self):
         Clock.schedule_once(self.load_first_screen, 2)
-
-    def navigate(self, screen):
-        self.manager.current = screen
-        bottom_navigation = self.manager.root.ids.bottom_navigation
-        print(bottom_navigation)
-        # tab_index = self.root.manager.screen_names.index(screen_name)  # Get tab index
-        # bottom_navigation.current_tab = tab_index
 
 
 class EvenlySpacedMDBoxLayout(MDBoxLayout):
@@ -110,16 +111,13 @@ class SplitwiseALTApp(MDApp):
             self.theme_cls.theme_style = "Dark"
             # theme_icon.icon = "weather-night"
 
-    def navigate(self, screen):
-        self.screen_manager.navigate(screen)
-
     def build(self):
         # screen = Screen()
 
         # for resizing window
         # self.bind(on_start=self.adjust_padding)
 
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Light"
         self.root = Builder.load_file("app.kv")
         self.screen_manager.on_start()
         self.screen_manager.add_widget(AppLoader(name="apploader"))

@@ -1,42 +1,56 @@
 <Account>
     id: "account"
 
-    MDBoxLayout:
 
-    MDBottomNavigation:
-        id: 'navigation'
-        #panel_color: "#eeeaea"
-        current: 'account'
-        selected_color_background: "orange"
-        text_color_active: "lightgrey"
+    MDFloatLayout:
 
-        MDBottomNavigationItem:
-            name: 'home'
-            text: 'Home'
-            icon: 'home-outline'
-            badge_icon: ""
-            on_tab_press: app.root.current = "home"
+        NavBar:
+            size_hint_y: 0.1
+            pos_hint: {"center_x": 0.5}
+            elevation: 5
+            md_bg_color: 1,1,1,1
+            radius: [16]
 
-        MDBottomNavigationItem:
-            name: 'account'
-            text: 'Account'
-            icon: 'book-account-outline'
-            badge_icon: ""
-            on_tab_press: app.root.current = "account"
+            MDGridLayout:
+                cols: 4
+                size_hint_x: 0.9
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                spacing: app.screen_width*0.05
+                MDIconButton:
+                    id: 'home'
+                    text: 'Home'
+                    icon: 'home-outline'
+                    badge_icon: ""
+                    theme_text_color: "Custom"
+                    text_color: 68, 115, 123, 1
+                    on_release:
+                        app.root.current = "home"
 
-            MDLabel:
-                text: "Account"
-                halign: 'center'
+                MDIconButton:
+                    id: 'account'
+                    text: 'Account'
+                    icon: 'book-account-outline'
+                    badge_icon: ""
+                    theme_text_color: "Custom"
+                    text_color: 68, 115, 123, 1
+                    on_release:
+                        app.root.current = "account"
 
-        MDBottomNavigationItem:
-            name: 'analysis'
-            text: 'Analysis'
-            icon: 'chart-donut'
-            badge_icon: ""
-            on_tab_press: app.root.current = "analysis"
+                MDIconButton:
+                    id: 'analysis'
+                    text: 'Analysis'
+                    icon: 'chart-donut'
+                    badge_icon: ""
+                    theme_text_color: "Custom"
+                    text_color: 68, 115, 123, 1
+                    on_release:
+                        app.root.current = "analysis"
 
-        MDBottomNavigationItem:
-            name: 'profile'
-            text: 'Profile'
-            icon: 'account-outline'
-            on_tab_press: app.root.current = "profile"
+                MDIconButton:
+                    id: 'profile'
+                    text: 'Profile'
+                    icon: 'account-outline'
+                    theme_text_color: "Custom"
+                    text_color: 68, 115, 123, 1
+                    on_release:
+                        app.root.current = "profile"
