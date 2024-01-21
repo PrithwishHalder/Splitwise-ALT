@@ -4,43 +4,45 @@
 
     MDFloatLayout:
 
-        AsyncImage:
-            source: "assets/profile.jpg"
-            size: '240dp', '240dp'
-            pos_hint: {'y': 0, "center_x": 0.5}
-            radius: 50
+        MDCard:
+            padding: 8
+            orientation: 'horizontal'
+            size_hint: 0.8, 0.2
+            pos_hint: {'center_x': 0.5, 'top': 0.9}
+            size: "200dp", "100dp"
+            shadow_softness: 2
+            style: "elevated"
+            md_bg_color: "#ffffff"
+            line_color: (0.2, 0.2, 0.2, 0.8)
+            spacing: 10
 
-        MDNavigationDrawer:
-            id: nav_drawer
-            radius: (0, 16, 16, 0)
+            AsyncImage:
+                source: 'assets/profile.jpg'
+                size_hint: 0.4, 0.8
+                pos_hint: {"center_y": 0.5}
 
-            MDNavigationDrawerMenu:
+            MDLabel:
+                id: name
 
-                MDNavigationDrawerHeader:
-                    title: "Header title"
-                    title_color: "#4a4939"
-                    text: "Header text"
-                    spacing: "4dp"
-                    padding: "12dp", 0, 0, "56dp"
+        MDScrollView:
+            pos_hint: {'center_x': 0.5, 'top': 0.7}
 
-                MDNavigationDrawerLabel:
-                    text: "Mail"
+            MDList:
+                OneLineIconListItem:
+                    text: "Profile"
+                    IconLeftWidget:
+                        icon: "account"
 
-                DrawerClickableItem:
-                    icon: "gmail"
-                    right_text: "+99"
-                    text_right_color: "#4a4939"
-                    text: "Inbox"
+                OneLineIconListItem:
+                    text: "Change Password"
+                    IconLeftWidget:
+                        icon: "key"
 
-                DrawerClickableItem:
-                    icon: "send"
-                    text: "Outbox"
-
-                MDNavigationDrawerDivider:
-
-                MDNavigationDrawerLabel:
-                    text: "Labels"
-
+                OneLineIconListItem:
+                    on_release: app.screen_manager.get_screen("profile").logout()
+                    text: "Logout"
+                    IconLeftWidget:
+                        icon: "logout"
 
         NavBar:
             size_hint_y: 0.1

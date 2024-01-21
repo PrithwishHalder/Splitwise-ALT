@@ -80,7 +80,7 @@
                     text: "Login"
                     icon: "login-variant"
                     text_color: "white"
-                    on_release: self.parent.parent.parent.parent.login()
+                    on_release: app.screen_manager.get_screen("login").login()
 
                 MDRoundFlatIconButton:
                     text: "Sign Up"

@@ -1,7 +1,7 @@
 # KivyMD modules
 from kivy.metrics import dp
 from kivymd.app import MDApp
-from kivymd.uix.behaviors import FakeRectangularElevationBehavior
+from kivymd.uix.behaviors import CommonElevationBehavior
 from kivymd.uix.boxlayout import MDBoxLayout
 
 # Kivy modules
@@ -26,7 +26,7 @@ from components.profile.profile import Profile
 Window.size = (350,580)
 
 
-class NavBar(FakeRectangularElevationBehavior, MDFloatLayout):
+class NavBar(CommonElevationBehavior, MDFloatLayout):
     pass
 
 
